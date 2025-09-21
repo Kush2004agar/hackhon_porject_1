@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyTerm - Python Terminal Demo</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background: #1a1a1a;
+            color: #00ff00;
+            margin: 0;
+            padding: 20px;
+        }
+        .terminal {
+            background: #000;
+            border: 2px solid #00ff00;
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .demo-section {
+            margin: 20px 0;
+            padding: 15px;
+            background: #111;
+            border-radius: 5px;
+        }
+        .command {
+            color: #ffff00;
+            font-weight: bold;
+        }
+        .output {
+            color: #00ffff;
+            margin-left: 20px;
+            white-space: pre-line;
+        }
+        .feature {
+            background: #222;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border-left: 4px solid #00ff00;
+        }
+        .github-link {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .github-link a {
+            color: #00ff00;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 20px;
+            border: 2px solid #00ff00;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        .github-link a:hover {
+            background: #00ff00;
+            color: #000;
+        }
+        .interactive-demo {
+            background: #000;
+            border: 1px solid #00ff00;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .input-area {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .prompt {
+            color: #00ff00;
+            margin-right: 10px;
+        }
+        .command-input {
+            background: #000;
+            border: none;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            outline: none;
+            flex: 1;
+        }
+        .execute-btn {
+            background: #00ff00;
+            color: #000;
+            border: none;
+            padding: 5px 15px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            margin-left: 10px;
+        }
+        .execute-btn:hover {
+            background: #00cc00;
+        }
+        .output-area {
+            background: #111;
+            padding: 10px;
+            border-radius: 3px;
+            min-height: 50px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+        }
+        .loading {
+            color: #ffff00;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="terminal">
+        <div class="header">
+            <h1>🐍 PyTerm - Python Terminal Demo</h1>
+            <p>Experience the power of natural language commands!</p>
+        </div>
+
+        <div class="demo-section">
+            <h2>🎮 Interactive Demo</h2>
+            <div class="interactive-demo">
+                <div class="input-area">
+                    <span class="prompt">pyterm></span>
+                    <input type="text" class="command-input" id="commandInput" placeholder="Try: show me the files" />
+                    <button class="execute-btn" onclick="executeCommand()">Execute</button>
+                </div>
+                <div class="output-area" id="outputArea">
+                    Welcome to PyTerm! Try typing a command above.<br>
+                    Examples: "show me the files", "what processes are running?", "help"
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>🚀 Live Demo Examples</h2>
+            <div class="feature">
+                <span class="command">pyterm> show me the files</span>
+                <div class="output">app/  main.py  README.md  requirements.txt  tests/</div>
+            </div>
+            
+            <div class="feature">
+                <span class="command">pyterm> create a folder called demo</span>
+                <div class="output">Created directory: demo</div>
+            </div>
+            
+            <div class="feature">
+                <span class="command">pyterm> what processes are running?</span>
+                <div class="output">PID    Name                    CPU%    Memory%   Status
+1234   python.exe              2.5     1.2       running
+5678   chrome.exe              15.3    8.7       running</div>
+            </div>
+            
+            <div class="feature">
+                <span class="command">pyterm> how much memory am I using?</span>
+                <div class="output">Memory Usage: 45.2% (7.2 GB / 16 GB)</div>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>✨ Natural Language Magic</h2>
+            <div class="feature">
+                <strong>Traditional Commands → Natural Language</strong><br>
+                <code>ls</code> → "show me the files"<br>
+                <code>mkdir logs</code> → "create a folder called logs"<br>
+                <code>cd Desktop</code> → "go to the desktop"<br>
+                <code>ps</code> → "what processes are running?"<br>
+                <code>mem</code> → "how much memory am I using?"
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>🛠️ Features</h2>
+            <div class="feature">
+                <strong>🧠 Natural Language Processing</strong><br>
+                Talk to your terminal like a human! No more memorizing command flags.
+            </div>
+            
+            <div class="feature">
+                <strong>📊 Real-time System Monitoring</strong><br>
+                Live CPU usage, memory stats, process monitoring with beautiful visualizations.
+            </div>
+            
+            <div class="feature">
+                <strong>🔒 Security-First Design</strong><br>
+                Path traversal protection, input validation, and safe file operations.
+            </div>
+            
+            <div class="feature">
+                <strong>🌍 Cross-Platform</strong><br>
+                Works seamlessly on Windows, Linux, and macOS.
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>📋 Quick Start</h2>
+            <div class="feature">
+                <code>git clone &lt;your-repo-url&gt;</code><br>
+                <code>cd PyTerm</code><br>
+                <code>pip install -r requirements.txt</code><br>
+                <code>python main.py</code>
+            </div>
+        </div>
+
+        <div class="github-link">
+            <a href="https://github.com/yourusername/PyTerm" target="_blank">
+                📁 View Source Code on GitHub
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function executeCommand() {
+            const input = document.getElementById('commandInput');
+            const output = document.getElementById('outputArea');
+            const command = input.value.trim();
+            
+            if (!command) return;
+            
+            // Show loading
+            output.innerHTML = '<span class="loading">Executing command...</span>';
+            
+            // Execute command via API
+            fetch('/api/command', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ command: command })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    output.innerHTML = `<span style="color: #ff0000;">Error: ${data.error}</span>`;
+                } else {
+                    output.innerHTML = `<span class="command">pyterm> ${command}</span><br><span class="output">${data.output}</span>`;
+                }
+            })
+            .catch(error => {
+                output.innerHTML = `<span style="color: #ff0000;">Error: ${error.message}</span>`;
+            });
+            
+            // Clear input
+            input.value = '';
+        }
+        
+        // Allow Enter key to execute command
+        document.getElementById('commandInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                executeCommand();
+            }
+        });
+        
+        // Focus on input when page loads
+        document.getElementById('commandInput').focus();
+    </script>
+</body>
+</html>
