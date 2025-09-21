@@ -233,7 +233,12 @@
                 },
                 body: JSON.stringify({ command: command })
             })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
             .then(data => {
                 if (data.error) {
                     output.innerHTML = `<span style="color: #ff0000;">Error: ${data.error}</span>`;
@@ -242,7 +247,8 @@
                 }
             })
             .catch(error => {
-                output.innerHTML = `<span style="color: #ff0000;">Error: ${error.message}</span>`;
+                console.error('API Error:', error);
+                output.innerHTML = `<span style="color: #ff0000;">Error: ${error.message}</span><br><span style="color: #ffff00;">Note: This is a demo simulation. The actual PyTerm runs locally.</span>`;
             });
             
             // Clear input
