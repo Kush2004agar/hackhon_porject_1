@@ -1,7 +1,4 @@
-from flask import Flask, render_template, request, jsonify
-import subprocess
-import os
-import tempfile
+from flask import Flask, request, jsonify
 import json
 
 app = Flask(__name__)
@@ -12,7 +9,7 @@ def index():
     with open('index.html', 'r') as f:
         return f.read()
 
-@app.route('/api/command', methods=['POST'])
+@app.route('/command', methods=['POST'])
 def execute_command():
     """Execute a PyTerm command and return the result"""
     try:
@@ -86,7 +83,7 @@ def execute_command():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-@app.route('/api/demo')
+@app.route('/demo')
 def demo_commands():
     """Return demo commands for the web interface"""
     demo_commands = [
@@ -124,7 +121,7 @@ def demo_commands():
     
     return jsonify({'commands': demo_commands})
 
-@app.route('/api/health')
+@app.route('/health')
 def health_check():
     """Health check endpoint for Vercel"""
     return jsonify({'status': 'healthy', 'service': 'PyTerm API'})

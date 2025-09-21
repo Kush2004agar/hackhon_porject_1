@@ -1,15 +1,5 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "index.html",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "web_app.py",
-      "use": "@vercel/python"
-    }
-  ],
   "routes": [
     {
       "src": "/",
@@ -17,12 +7,7 @@
     },
     {
       "src": "/api/(.*)",
-      "dest": "/web_app.py"
+      "dest": "/api/web_app.py"
     }
-  ],
-  "functions": {
-    "web_app.py": {
-      "runtime": "python3.9"
-    }
-  }
+  ]
 }
