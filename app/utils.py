@@ -1,10 +1,14 @@
 """
 Utility Functions Module
 
+This is where I put all the helper functions that make PyTerm work smoothly.
+I learned a lot about security while building this - especially about path 
+traversal attacks! The safe_join function was a real challenge to get right.
+
 Contains helper functions for:
-- Path jail (security)
-- Output formatting
-- Error handling
+- Path jail (security) - learned this the hard way!
+- Output formatting - making things look pretty
+- Error handling - because things go wrong
 """
 
 import os
@@ -36,6 +40,11 @@ class SecurityError(PyTermError):
 def safe_join(base_path: Union[str, Path], *paths: str) -> Path:
     """
     Safely join paths while preventing directory traversal attacks.
+    
+    This was one of the trickiest functions to get right! I had to learn about
+    path traversal attacks (like ../../../etc/passwd) and how to prevent them.
+    The key insight was to validate each path component individually before
+    joining them together.
     
     Args:
         base_path: The base path to join from

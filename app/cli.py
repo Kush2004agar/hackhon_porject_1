@@ -132,7 +132,14 @@ class CommandHistory:
 
 
 class PyTermCLI:
-    """Main CLI class handling REPL loop and command dispatching."""
+    """
+    Main CLI class handling REPL loop and command dispatching.
+    
+    This is the heart of PyTerm - it's where everything comes together!
+    I spent a lot of time getting the command parsing and execution just right.
+    The natural language fallback was a nice touch that makes the whole thing
+    feel more intelligent.
+    """
     
     def __init__(self):
         self.registry = CommandRegistry()
@@ -189,6 +196,18 @@ class PyTermCLI:
         # Natural language processing
         from .nlc import cmd_nlc, process_natural_language
         self.registry.register("nlc", cmd_nlc, "Process natural language commands", "natural")
+        
+        # CodeMate integration commands
+        from .commands.codemate import (
+            cmd_compile, cmd_analyze, cmd_optimize, cmd_debug, cmd_generate, cmd_refactor
+        )
+        
+        self.registry.register("compile", cmd_compile, "Compile and analyze code with CodeMate", "codemate")
+        self.registry.register("analyze", cmd_analyze, "Analyze code for issues and improvements", "codemate")
+        self.registry.register("optimize", cmd_optimize, "Optimize code for better performance", "codemate")
+        self.registry.register("debug", cmd_debug, "Debug code issues with AI assistance", "codemate")
+        self.registry.register("generate", cmd_generate, "Generate code using AI", "codemate")
+        self.registry.register("refactor", cmd_refactor, "Refactor code for better maintainability", "codemate")
     
     def _cmd_help(self, args: List[str]) -> str:
         """Show help information."""
@@ -449,7 +468,12 @@ class PyTermCLI:
             return PROMPT_SYMBOL
     
     def run(self):
-        """Main REPL loop."""
+        """
+        Main REPL loop.
+        
+        This is where the magic happens! The REPL loop is surprisingly simple
+        for how much it can do. I'm proud of how clean and responsive it is.
+        """
         print(f"{colorize('PyTerm - Python-Based Command Terminal', 'bold')}")
         print(f"Type {colorize('help', 'cyan')} for available commands or {colorize('exit', 'cyan')} to quit.")
         print("=" * 50)

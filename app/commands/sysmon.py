@@ -1,7 +1,14 @@
 """
 System Monitoring Commands Module
 
-Implements system monitoring operations: cpu, mem, ps
+I'm always curious about what's happening on my computer, so I built these
+system monitoring commands. The psutil library makes it surprisingly easy
+to get real-time system information!
+
+I added visual elements like progress bars and color coding to make the
+output more interesting. Because who wants to stare at plain text numbers?
+
+Implements system monitoring operations: cpu, mem, ps, disk, uptime, net
 Uses psutil for cross-platform system information.
 """
 
@@ -19,6 +26,10 @@ from ..utils import (
 def cmd_cpu(args: List[str]) -> str:
     """
     Display CPU usage information.
+    
+    This was fun to build! I wanted to show CPU usage in a way that's
+    actually useful, not just raw numbers. The per-CPU breakdown is
+    especially handy when debugging performance issues.
     
     Usage: cpu [options]
     Options:

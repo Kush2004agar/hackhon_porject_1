@@ -1,10 +1,14 @@
 """
 Configuration Module
 
+This is where I keep all the settings and constants for PyTerm.
+I learned that having everything in one place makes the code much easier
+to maintain and modify. Plus, it's easier to see what can be configured!
+
 Contains constants, configuration settings, and paths:
-- ROOT_DIR
-- History file location
-- Application constants
+- ROOT_DIR - where everything lives
+- History file location - so you don't lose your commands
+- Application constants - all the magic numbers in one place
 """
 
 import os
@@ -22,6 +26,7 @@ APP_DESCRIPTION = "Python-Based Command Terminal"
 # File paths
 HISTORY_FILE = ROOT_DIR / ".pyterm_history"
 CONFIG_FILE = ROOT_DIR / ".pyterm_config"
+CODEMATE_CONFIG_FILE = ROOT_DIR / ".codemate_config"
 
 # CLI settings
 MAX_HISTORY_SIZE = 1000
@@ -32,6 +37,13 @@ CONTINUATION_PROMPT = "... "
 MAX_PATH_DEPTH = 50  # Maximum directory depth for security
 ALLOWED_PROTOCOLS = ["file"]  # Only allow file:// protocol
 
+# CodeMate settings
+CODEMATE_API_BASE_URL = "https://api.codemate.ai/v1"
+CODEMATE_TIMEOUT = 30  # seconds
+CODEMATE_MAX_FILE_SIZE = 1024 * 1024  # 1MB max file size for analysis
+CODEMATE_SUPPORTED_LANGUAGES = ["python", "javascript", "typescript", "java", "cpp", "c"]
+CODEMATE_DEFAULT_MODEL = "gpt-4"
+
 # Display settings
 PAGE_SIZE = 20  # Number of items to show per page
 MAX_OUTPUT_LINES = 1000  # Maximum lines to display at once
@@ -41,7 +53,8 @@ COMMAND_CATEGORIES = {
     "filesystem": ["ls", "cd", "pwd", "mkdir", "rm", "cat", "touch"],
     "system": ["cpu", "mem", "ps", "uptime", "disk"],
     "utility": ["help", "exit", "clear", "history"],
-    "natural": ["show", "list", "create", "delete", "go", "where"]
+    "natural": ["show", "list", "create", "delete", "go", "where"],
+    "codemate": ["compile", "analyze", "optimize", "debug", "generate", "refactor"]
 }
 
 # Natural language patterns (basic regex patterns)
@@ -65,7 +78,12 @@ ERROR_MESSAGES = {
     "path_too_deep": "Path exceeds maximum depth limit",
     "unsafe_operation": "Unsafe operation detected: {operation}",
     "history_error": "Error accessing command history",
-    "config_error": "Configuration error: {error}"
+    "config_error": "Configuration error: {error}",
+    "codemate_api_error": "CodeMate API error: {error}",
+    "codemate_timeout": "CodeMate request timed out",
+    "codemate_file_too_large": "File too large for CodeMate analysis (max {max_size} bytes)",
+    "codemate_unsupported_language": "Unsupported language for CodeMate: {language}",
+    "codemate_no_api_key": "CodeMate API key not configured. Set CODEMATE_API_KEY environment variable."
 }
 
 # Success messages
@@ -73,7 +91,11 @@ SUCCESS_MESSAGES = {
     "directory_created": "Directory '{path}' created successfully",
     "file_deleted": "File '{path}' deleted successfully",
     "directory_deleted": "Directory '{path}' deleted successfully",
-    "directory_changed": "Changed directory to '{path}'"
+    "directory_changed": "Changed directory to '{path}'",
+    "codemate_analysis_complete": "CodeMate analysis completed for '{file}'",
+    "codemate_optimization_complete": "CodeMate optimization completed for '{file}'",
+    "codemate_generation_complete": "CodeMate code generation completed",
+    "codemate_refactor_complete": "CodeMate refactoring completed for '{file}'"
 }
 
 # Color codes for terminal output (ANSI escape sequences)

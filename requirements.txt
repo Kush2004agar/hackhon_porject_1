@@ -1,6 +1,8 @@
 # PyTerm Dependencies
-psutil>=5.9.0
+# These are the packages I needed to make PyTerm work
+psutil>=5.9.0          # For system monitoring - this library is amazing!
+requests>=2.28.0       # For CodeMate API integration (bonus feature)
 
 # Development Dependencies
-pytest>=7.0.0
-pytest-cov>=4.0.0
+pytest>=7.0.0          # For testing - my safety net!
+pytest-cov>=4.0.0      # For test coverage reports

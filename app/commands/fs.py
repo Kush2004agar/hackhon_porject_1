@@ -1,7 +1,12 @@
 """
 File System Commands Module
 
-Implements file system operations: ls, cd, pwd, mkdir, rm, cat, touch
+This is where I implemented all the file operations. I learned a lot about
+security while building this - especially about path traversal attacks!
+Every file operation goes through the safe_join() function to make sure
+users can't access files outside the allowed directory.
+
+Implements file system operations: ls, cd, pwd, mkdir, rm, cat, touch, cp, mv, find, wc, head, tail
 """
 
 import os

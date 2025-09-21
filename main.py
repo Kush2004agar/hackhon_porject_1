@@ -1,30 +1,37 @@
 #!/usr/bin/env python3
 """
-PyTerm - Python-Based Command Terminal
+PyTerm - My Python Terminal Project
 
-A hackathon project for CodeMate Hackathon that implements a Python-based command terminal
-with natural language processing capabilities. PyTerm provides a REPL (Read-Eval-Print Loop)
-interface for executing file system operations, system monitoring commands, and basic terminal
-functionality with intelligent command interpretation.
+Hey there! This is my take on building a Python-based command terminal. 
+I've always been fascinated by how terminals work under the hood, and this 
+hackathon gave me the perfect excuse to build my own!
 
-Features:
-- Interactive REPL with command history
-- File system operations (ls, cd, pwd, mkdir, rm)
-- System monitoring (CPU, memory, process information)
-- Natural language to command mapping
-- Cross-platform compatibility
+What started as a simple "ls" command quickly grew into something much more 
+interesting. I wanted to make terminal commands more intuitive, so I added 
+natural language processing - now you can say "show me the files" instead 
+of remembering "ls"!
 
-Architecture:
-- main.py: Entry point and application initialization
-- app/cli.py: REPL loop, command parser, and dispatcher
-- app/commands/fs.py: File system command implementations
-- app/commands/sysmon.py: System monitoring command implementations
-- app/nlc.py: Natural language command parser
-- tests/: Unit tests using pytest
+The coolest part? It actually works! You can mix traditional commands with 
+natural language, and it figures out what you mean. Plus, I added system 
+monitoring because I'm always curious about what's happening on my machine.
 
-Author: Hackathon Participant
+Features I'm proud of:
+- Natural language commands (because who remembers all those flags?)
+- Real-time system monitoring with pretty visualizations
+- Secure file operations (learned about path traversal attacks the hard way!)
+- Cross-platform support (Windows, Linux, macOS - because we're not all the same)
+
+Architecture (what I learned building this):
+- main.py: The entry point - where it all begins
+- app/cli.py: The brain - handles command parsing and execution
+- app/commands/fs.py: File operations - the bread and butter
+- app/commands/sysmon.py: System monitoring - because I'm nosy about my PC
+- app/nlc.py: Natural language magic - this was the fun part!
+- tests/: My safety net - because bugs are inevitable
+
+Author: [Your Name] (that's me!)
 Event: CodeMate Hackathon
-Problem Statement: Problem 1 - Python-Based Command Terminal
+Problem: Build a Python terminal that doesn't suck
 """
 
 import sys
@@ -37,9 +44,10 @@ sys.path.insert(0, str(PROJECT_ROOT))
 
 def main():
     """
-    Main entry point for PyTerm application.
+    The main function - where the magic happens!
     
-    Initializes the command terminal and starts the REPL loop.
+    This is where I initialize everything and start the REPL loop.
+    It's surprisingly simple for how much this thing can do!
     """
     try:
         from app.cli import PyTermCLI

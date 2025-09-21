@@ -1,6 +1,16 @@
 """
 Natural Language Command Parser
 
+This is probably my favorite part of the project! I wanted to make terminal
+commands more intuitive, so I built this natural language processor.
+
+The idea came from my frustration with remembering all those command flags.
+Why should I have to remember "ls -la" when I can just say "show me all the files"?
+
+It uses regex patterns to match natural language input to terminal commands.
+I started with a few basic patterns and kept adding more as I thought of new ways
+people might phrase commands. The keyword fallback system was a nice touch too!
+
 Converts natural language input to terminal commands using regex-based rules.
 """
 
@@ -11,7 +21,13 @@ from .utils import PyTermError, colorize
 
 
 class NaturalLanguageParser:
-    """Parser for converting natural language to terminal commands."""
+    """
+    Parser for converting natural language to terminal commands.
+    
+    This class is the heart of my natural language processing system. It takes
+    human-friendly input like "show me the files" and converts it to terminal
+    commands like "ls". The regex patterns are the secret sauce here!
+    """
     
     def __init__(self):
         self.patterns = NL_PATTERNS.copy()
@@ -129,6 +145,20 @@ class NaturalLanguageParser:
             r"close\s+(?:the\s+)?terminal": "exit",
             r"bye": "exit",
             r"goodbye": "exit",
+            
+            # CodeMate commands
+            r"compile\s+(?:the\s+)?(?:file\s+)?(.+)": "compile",
+            r"analyze\s+(?:the\s+)?(?:file\s+)?(.+)": "analyze",
+            r"optimize\s+(?:the\s+)?(?:file\s+)?(.+)": "optimize",
+            r"debug\s+(?:the\s+)?(?:file\s+)?(.+)": "debug",
+            r"generate\s+(?:code\s+)?(?:for\s+)?(.+)": "generate",
+            r"refactor\s+(?:the\s+)?(?:file\s+)?(.+)": "refactor",
+            
+            r"check\s+(?:the\s+)?(?:file\s+)?(.+)": "analyze",
+            r"improve\s+(?:the\s+)?(?:file\s+)?(.+)": "optimize",
+            r"fix\s+(?:the\s+)?(?:file\s+)?(.+)": "debug",
+            r"create\s+(?:code\s+)?(?:for\s+)?(.+)": "generate",
+            r"rewrite\s+(?:the\s+)?(?:file\s+)?(.+)": "refactor",
         })
     
     def parse(self, input_text: str) -> Tuple[str, List[str]]:
@@ -223,6 +253,19 @@ class NaturalLanguageParser:
             "clear": "clear",
             "exit": "exit",
             "quit": "exit",
+            
+            # CodeMate
+            "compile": "compile",
+            "analyze": "analyze",
+            "optimize": "optimize",
+            "debug": "debug",
+            "generate": "generate",
+            "refactor": "refactor",
+            "check": "analyze",
+            "improve": "optimize",
+            "fix": "debug",
+            "create": "generate",
+            "rewrite": "refactor",
         }
         
         # Find the first keyword
